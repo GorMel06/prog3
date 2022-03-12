@@ -1,9 +1,9 @@
-class Grass {
+class LivingCreature {
     constructor(x, y, index) {
         this.x = x;
         this.y = y;
-        this.index = index;
         this.multiply = 0;
+        this.index = index;
         this.directions = [
             [this.x - 1, this.y - 1],
             [this.x, this.y - 1],
@@ -14,22 +14,25 @@ class Grass {
             [this.x, this.y + 1],
             [this.x + 1, this.y + 1]
         ];
+
     }
-
-
-    chooseCell(character) {
+    chooseCell(ch) {
         var found = [];
         for (var i in this.directions) {
             var x = this.directions[i][0];
             var y = this.directions[i][1];
             if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-                if (matrix[y][x] == character) {
+                if (matrix[y][x] == ch) {
                     found.push(this.directions[i]);
                 }
             }
         }
         return found;
     }
+}
+
+
+class Grass extends LivingCreature {
 
 
     mul() {
@@ -52,38 +55,17 @@ class Grass {
 }
 
 
-class Flouwer {
-    constructor(x, y, index) {
-        this.x = x;
-        this.y = y;
-        this.index = index;
-
-    }
+class Flouwer extends LivingCreature {
 }
 
 
-class GrassEater {
-    constructor(x, y, index) {
-        this.x = x;
-        this.y = y;
-        this.energy = 8;
-        this.index = index;
-        this.directions = [];
-    }
+class GrassEater extends LivingCreature {
+
 
     chooseCell(character) {
         this.getNewCoordinates()
-        var found = [];
-        for (var i in this.directions) {
-            var x = this.directions[i][0];
-            var y = this.directions[i][1];
-            if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-                if (matrix[y][x] == character) {
-                    found.push(this.directions[i]);
-                }
-            }
-        }
-        return found;
+        return super.chooseCell(character);
+
     }
 
     getNewCoordinates() {
@@ -174,27 +156,11 @@ class GrassEater {
     }
 }
 
-class Gishatich {
-    constructor(x, y, index) {
-        this.x = x;
-        this.y = y;
-        this.energy = 8;
-        this.index = index;
-        this.directions = [];
-    }
+class Gishatich extends LivingCreature {
+
     chooseCell(character) {
         this.getNewCoordinates()
-        var found = [];
-        for (var i in this.directions) {
-            var x = this.directions[i][0];
-            var y = this.directions[i][1];
-            if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-                if (matrix[y][x] == character) {
-                    found.push(this.directions[i]);
-                }
-            }
-        }
-        return found;
+        return super.chooseCell(character);
     }
     getNewCoordinates() {
         this.directions = [
@@ -283,27 +249,11 @@ class Gishatich {
 
 
 
-class Axjik {
-    constructor(x, y, index) {
-        this.x = x;
-        this.y = y;
-        this.energy = 10;
-        this.index = index;
-        this.directions = [];
-    }
+class Axjik extends LivingCreature {
+
     chooseCell(character) {
         this.getNewCoordinates()
-        var found = [];
-        for (var i in this.directions) {
-            var x = this.directions[i][0];
-            var y = this.directions[i][1];
-            if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-                if (matrix[y][x] == character) {
-                    found.push(this.directions[i]);
-                }
-            }
-        }
-        return found;
+        return super.chooseCell(character)
     }
     getNewCoordinates() {
         this.directions = [
