@@ -3,23 +3,23 @@ var socket = io();
 var side = 20;
 
 function setup() {
-    for (var y = 0; y < 20; y++) {
-        matrix[y] = [];
-        for (var x = 0; x < 20; x++) {
-            matrix[y][x] = random([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, ]);
-        }
-    }
+    // for (var y = 0; y < 20; y++) {
+    //     matrix[y] = [];
+    //     for (var x = 0; x < 20; x++) {
+    //         matrix[y][x] = random([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, ]);
+    //     }
+    // }
 
-    frameRate(5);
-    createCanvas(matrix[0].length * side, matrix.length * side);
+   
+    createCanvas(50 * side, 50* side);
     background('#acacac');
 
   
 }
 
-function draw() {
+function drawing(matrix) {
 
-    for (var y = 0; y < matrix.length; y++) {
+    for (var y = 0; y < matrix[0].length; y++) { 
         for (var x = 0; x < matrix[y].length; x++) {
 
             if (matrix[y][x] == 1) {
@@ -48,5 +48,5 @@ function draw() {
             }
         }
     }
-    socket.on('send matrix', draw)
 }
+socket.on('send matrix', drawing)

@@ -11,12 +11,12 @@ app.get('/', function (req, res) {
 });
 server.listen(3000);
 
-var matrix = [];
-var flouwerArr = [];
-var grassArr = [];
-var grassEaterArr = [];
-var gishatichArr = [];
-var axjikArr = [];
+matrix = [];
+flouwerArr = [];
+grassArr = [];
+grassEaterArr = [];
+gishatichArr = [];
+axjikArr = [];
 
 var n = 50;
 
@@ -33,7 +33,7 @@ function rand(min, max) {
 for (let i = 0; i < n; i++) {
     matrix[i] = [];
     for (let j = 0; j < n; j++) {
-        matrix[i][j] = Math.floor(rand(0, 3))
+        matrix[i][j] = Math.floor(rand(0, 6))
 
     }
 }
@@ -42,7 +42,7 @@ io.sockets.emit('send matrix', matrix)
 
 
 
-function createObject(matrix) {
+function createObject() {
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
 
@@ -96,7 +96,7 @@ setInterval(game, 1000)
 
 
 io.on('connection', function () {
-    createObject(matrix)
+    createObject()
 });
 
 var statistics = {};
