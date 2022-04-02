@@ -1,0 +1,10 @@
+.button1 {
+    background-color: blue;
+    color: white;
+    transition-duration: 0.4s;
+  }
+  
+  .button1:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+  }

@@ -11,7 +11,7 @@ function setup() {
     // }
 
    
-    createCanvas(50 * side, 50* side);
+    createCanvas(20 * side, 20 * side);
     background('#acacac');
 
   
@@ -50,3 +50,23 @@ function drawing(matrix) {
     }
 }
 socket.on('send matrix', drawing)
+
+
+function kill(){
+    socket.emit("kill",kill)
+}
+function addGrass() {
+    socket.emit("add grass")
+}
+function addGrassEater() {
+    socket.emit("add grassEater")
+}
+function addAxjik() {
+    socket.emit("add Axjik")
+}
+function addFlouwer() {
+    socket.emit("add Flouwer")
+}
+function addGishatich() {
+    socket.emit("add Gishatich")
+}
